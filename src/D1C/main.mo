@@ -104,7 +104,7 @@ actor {
         var new_array : [Nat] = []
         for (value in array3.vals()) {
            if (value != n) {
-               new_array := array3.append<nat>(new_array, [n])      
+               new_array := array3.append<Nat>(new_array, [value])      
            };
         };
         public func test2() : async () {
