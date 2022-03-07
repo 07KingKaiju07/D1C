@@ -61,6 +61,7 @@ actor {
             return (0);
         };
         var counter : Nat = 0;
+
         for(value in array.vals()) {
             counter := counter + value;
         };
@@ -77,5 +78,47 @@ actor {
     };
     public func test() : async Nat {
         return (print_sum_of_existing_array(example_array));
+    };
+    // Challenge 8 : Write a function maximum
+    // that takes an array of natural numbers
+    // and returns the maximum value in the array. 
+    // This function will returns 0 if the array is empty.
+    //let array2 : [Nat] = [1, 2, 3, 5, 6, 7];
+    public func maximum(array2 : [Nat]) : async Nat {
+        if (array2.size() == 0) {
+            return (0);
+        };
+        var max_array : Nat = 0;
+        for (value in array2.vals()){
+            if (max_array < value) {
+                max_array := value;
+            };
+        }; 
+        return (max_array);
+    };
+    // Challenge 9 : Write a function remove_from_array 
+    // that takes 2 parameters : an array of natural numbers and a natural number n
+    // and returns a new array where all occurences of n have been removed
+    // (order should remain unchanged).  
+    public func remove_from_array(array3 : [Nat], n : Nat) async Nat {
+        var new_array : [Nat] = []
+        for (value in array3.vals()) {
+           if (value != n) {
+               new_array := array3.append<nat>(new_array, [n])      
+           };
+        };
+        public func test2() : async () {
+            for (value2 in new_array.vals()){
+                Debug.print(debug_show(value2))
+            }
+        }
     }
+    ////////////
+    /// let array : [Nat] = [1, 2, 3, 4, 5];
+    /// public func test2() : async () {
+    ///    for (value in array.vals()){
+    ///        Debug.print(debug_show(value))
+    ///    };
+    ///};
+
 };
